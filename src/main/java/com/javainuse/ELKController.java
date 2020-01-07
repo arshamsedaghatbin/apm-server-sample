@@ -21,6 +21,9 @@ class ELKController {
 	@Autowired
 	RestTemplate restTemplete;
 
+	@Autowired
+	private ServiceTest serviceTest;
+
 	@Bean
 	RestTemplate restTemplate() {
 		return new RestTemplate();
@@ -28,16 +31,17 @@ class ELKController {
 
 	@RequestMapping(value = "/elk")
 	public String helloWorld() {
+		serviceTest.test();
 		String response = "Welcome to javainuse" + new Date();
-		Test test=new Test();
-		test.setName("arsham");
-		test.setFatherName("farzad");
-		try {
-			LOG.error(new ObjectMapper().writeValueAsString(test));
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		;
+//		Test test=new Test();
+//		test.setName("arsham");
+//		test.setFatherName("farzad");
+//		try {
+//			LOG.error(new ObjectMapper().writeValueAsString(test));
+//		} catch (JsonProcessingException e) {
+//			e.printStackTrace();
+//		}
+//		;
 		return response;
 	}
 
